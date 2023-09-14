@@ -8,13 +8,6 @@ function App() {
   const [record, setRecord] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]); // Maintain selected rows
 
-  // Load data from local storage on component mount
-  useEffect(() => {
-    const storedData = localStorage.getItem('crud');
-    if (storedData) {
-      setRecord(JSON.parse(storedData));
-    }
-  }, []);
 
   const handleSubmit = () => {
     let obj = {
@@ -53,6 +46,17 @@ function App() {
     // Clear the selected rows
     setSelectedRows([]);
   };
+
+  
+  // Load data from local storage on component mount
+  useEffect(() => {
+    const storedData = localStorage.getItem('crud');
+    if (storedData) {
+      setRecord(JSON.parse(storedData));
+    }else{
+      setRecord([]);
+    }
+  }, []);
 
   return (
     <center>
