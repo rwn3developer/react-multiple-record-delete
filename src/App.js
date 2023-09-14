@@ -37,16 +37,23 @@ function App() {
 
   const multipleDelete = () => {
     // Filter out the selected rows from the record array
-    const updatedRecords = record.filter((val) => !selectedRows.includes(val.id));
 
-    // Update the state and local storage
-    setRecord(updatedRecords);
-    localStorage.setItem('crud', JSON.stringify(updatedRecords));
-
-    // Clear the selected rows
-    setSelectedRows([]);
-  };
-
+    if(selectedRows.length != 0){
+      
+      const updatedRecords = record.filter((val) => !selectedRows.includes(val.id));
+      
+      // Update the state and local storage
+      setRecord(updatedRecords);
+      localStorage.setItem('crud', JSON.stringify(updatedRecords));
+      
+      // Clear the selected rows
+      setSelectedRows([]);
+    }
+    else{
+      alert("Please select checkbox Button");
+    }
+  }
+    
   
   // Load data from local storage on component mount
   useEffect(() => {
